@@ -1,0 +1,15 @@
+{
+  "header": "Notes",
+  "language": "Language",
+  "notes-list": "List of notes",
+  "note-detail": "Note detail",
+  "loading": "Loading. Please wait.",
+  "error": "Error",
+  "write-note": "Write a note",
+  "add": "Add",
+  "delete": "Delete",
+  "save": "Save",
+  "cancel": "Cancel",
+  "edit": "Edit",
+  "back": "Back"
+}

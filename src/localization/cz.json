@@ -1,0 +1,15 @@
+{
+  "header": "Poznámky",
+  "language": "Jazyk",
+  "notes-list": "Seznam poznámek",
+  "note-detail": "Detail poznámky",
+  "loading": "Načítání. Počkejte prosím.",
+  "error": "Chyba",
+  "write-note": "Napiš poznámku",
+  "add": "Přidat",
+  "delete": "Smazat",
+  "save": "Uložit",
+  "cancel": "Zrušit",
+  "edit": "Upravit",
+  "back": "Zpět"
+}
