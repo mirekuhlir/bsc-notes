@@ -25,20 +25,12 @@ export default class Note extends Component {
     modalIsOpen: false
   };
 
-  startEditingNote = () => {
-    this.setState({ isEditing: true });
-  };
-
   handleChange = event => {
     this.setState({ note: { title: event.target.value } });
   };
 
-  openModal = () => {
-    this.setState({ modalIsOpen: true });
-  };
-
-  closeModal = () => {
-    this.setState({ modalIsOpen: false });
+  handleButton = (stateName, value) => {
+    this.setState({ [stateName]: value });
   };
 
   render() {
@@ -102,7 +94,9 @@ export default class Note extends Component {
                   className="btn btn-primary btn-min-width"
                   type="button"
                   name="edit"
-                  onClick={this.startEditingNote}
+                  onClick={() => {
+                    this.handleButton('isEditing', true);
+                  }}
                 >
                   <Translate string={'edit'} />
                 </button>
@@ -111,14 +105,18 @@ export default class Note extends Component {
                   className="btn btn-danger ml-3 btn-min-width"
                   type="button"
                   name="delete"
-                  onClick={this.openModal}
+                  onClick={() => {
+                    this.handleButton('modalIsOpen', true);
+                  }}
                 >
                   <Translate string={'delete'} />
                 </button>
                 <Modal
                   isOpen={this.state.modalIsOpen}
                   onAfterOpen={this.afterOpenModal}
-                  onRequestClose={this.closeModal}
+                  onRequestClose={() => {
+                    this.handleButton('modalIsOpen', false);
+                  }}
                   style={customStyles}
                   contentLabel="Modal"
                   shouldReturnFocusAfterClose={false}
@@ -142,7 +140,9 @@ export default class Note extends Component {
                       <div className="col">
                         <button
                           className="btn btn-primary btn-min-width"
-                          onClick={this.closeModal}
+                          onClick={() => {
+                            this.handleButton('modalIsOpen', false);
+                          }}
                           type="button"
                         >
                           <Translate string={'no'} />
@@ -164,11 +164,4 @@ Note.propTypes = {
   saveEditedNote: PropTypes.func.isRequired,
   deleteNote: PropTypes.func.isRequired,
   note: PropTypes.object.isRequired
-};
-
-Note.defaultProps = {
-  note: {
-    id: 0,
-    title: 'Note title'
-  }
 };

@@ -17,10 +17,4 @@ ErrorMessage.propTypes = {
   error: PropTypes.object.isRequired
 };
 
-ErrorMessage.defaultProps = {
-  error: {
-    message: 'Error'
-  }
-};
-
 export default ErrorMessage;
