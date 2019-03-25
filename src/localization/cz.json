@@ -11,5 +11,8 @@
   "save": "Uložit",
   "cancel": "Zrušit",
   "edit": "Upravit",
-  "back": "Zpět"
+  "back": "Zpět",
+  "delete-note": "Smazat poznámku?",
+  "yes": "Ano",
+  "no": "Ne"
 }

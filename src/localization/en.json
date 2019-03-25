@@ -11,5 +11,8 @@
   "save": "Save",
   "cancel": "Cancel",
   "edit": "Edit",
-  "back": "Back"
+  "back": "Back",
+  "delete-note": "Delete the note?",
+  "yes": "Yes",
+  "no": "No"
 }

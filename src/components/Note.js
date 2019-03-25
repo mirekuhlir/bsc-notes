@@ -2,11 +2,27 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Translate from '../localization/Translate';
 import PropTypes from 'prop-types';
+import Modal from 'react-modal';
+
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)'
+  }
+};
+
+Modal.setAppElement('#root');
+
 export default class Note extends Component {
   state = {
     isEditing: false,
     note: this.props.note,
-    noteBeforeCancel: this.props.note
+    noteBeforeCancel: this.props.note,
+    modalIsOpen: false
   };
 
   startEditingNote = () => {
@@ -15,6 +31,14 @@ export default class Note extends Component {
 
   handleChange = event => {
     this.setState({ note: { title: event.target.value } });
+  };
+
+  openModal = () => {
+    this.setState({ modalIsOpen: true });
+  };
+
+  closeModal = () => {
+    this.setState({ modalIsOpen: false });
   };
 
   render() {
@@ -82,14 +106,51 @@ export default class Note extends Component {
                 >
                   <Translate string={'edit'} />
                 </button>
+
                 <button
                   className="btn btn-danger ml-3 btn-min-width"
                   type="button"
                   name="delete"
-                  onClick={() => this.props.deleteNote(this.props.note.id)}
+                  onClick={this.openModal}
                 >
                   <Translate string={'delete'} />
                 </button>
+                <Modal
+                  isOpen={this.state.modalIsOpen}
+                  onAfterOpen={this.afterOpenModal}
+                  onRequestClose={this.closeModal}
+                  style={customStyles}
+                  contentLabel="Modal"
+                  shouldReturnFocusAfterClose={false}
+                >
+                  <div className="text-center align-self-center">
+                    <h4>
+                      <Translate string={'delete-note'} />
+                    </h4>
+                    <hr />
+                    <div className="d-flex justify-content-between">
+                      <div className="col">
+                        <button
+                          className="btn btn-danger btn-min-width"
+                          onClick={() =>
+                            this.props.deleteNote(this.props.note.id)
+                          }
+                        >
+                          <Translate string={'yes'} />
+                        </button>
+                      </div>
+                      <div className="col">
+                        <button
+                          className="btn btn-primary btn-min-width"
+                          onClick={this.closeModal}
+                          type="button"
+                        >
+                          <Translate string={'no'} />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </Modal>
               </div>
             </div>
           )}

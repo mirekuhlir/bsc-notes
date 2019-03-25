@@ -27,7 +27,3 @@ export default class Translate extends Component {
 Translate.propTypes = {
   string: PropTypes.string
 };
-
-Translate.defaultProps = {
-  string: 'Missing translation'
-};
