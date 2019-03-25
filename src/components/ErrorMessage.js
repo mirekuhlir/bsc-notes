@@ -1,5 +1,6 @@
 import React from 'react';
 import Translate from '../localization/Translate';
+import PropTypes from 'prop-types';
 
 const ErrorMessage = props => {
   return (
@@ -10,6 +11,16 @@ const ErrorMessage = props => {
       <p>{props.error.message}</p>
     </div>
   );
+};
+
+ErrorMessage.propTypes = {
+  error: PropTypes.object.isRequired
+};
+
+ErrorMessage.defaultProps = {
+  error: {
+    message: 'Error'
+  }
 };
 
 export default ErrorMessage;

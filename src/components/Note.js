@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Translate from '../localization/Translate';
+import PropTypes from 'prop-types';
 export default class Note extends Component {
   state = {
     isEditing: false,
@@ -97,3 +98,16 @@ export default class Note extends Component {
     );
   }
 }
+
+Note.propTypes = {
+  saveEditedNote: PropTypes.func.isRequired,
+  deleteNote: PropTypes.func.isRequired,
+  note: PropTypes.object.isRequired
+};
+
+Note.defaultProps = {
+  note: {
+    id: 0,
+    title: 'Note title'
+  }
+};

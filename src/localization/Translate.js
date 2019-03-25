@@ -3,6 +3,7 @@ import { LocalizationContext } from './LocalizationContext';
 
 import en from './en.json';
 import cz from './cz.json';
+import PropTypes from 'prop-types';
 
 export default class Translate extends Component {
   state = {
@@ -22,3 +23,11 @@ export default class Translate extends Component {
     );
   }
 }
+
+Translate.propTypes = {
+  string: PropTypes.string
+};
+
+Translate.defaultProps = {
+  string: 'Missing translation'
+};

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Translate from '../localization/Translate';
 import { LocalizationContext } from '../localization/LocalizationContext';
+import PropTypes from 'prop-types';
 
 export default class DropdownMenu extends Component {
   state = {
@@ -67,3 +68,7 @@ export default class DropdownMenu extends Component {
     );
   }
 }
+
+DropdownMenu.propTypes = {
+  changeLanguage: PropTypes.func.isRequired
+};

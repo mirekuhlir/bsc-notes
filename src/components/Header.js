@@ -1,6 +1,7 @@
 import React from 'react';
 import DropdownMenu from './DropdownMenu';
 import Translate from '../localization/Translate';
+import PropTypes from 'prop-types';
 
 const Header = ({ changeLanguage }) => {
   return (
@@ -12,6 +13,10 @@ const Header = ({ changeLanguage }) => {
       <DropdownMenu changeLanguage={changeLanguage} />
     </nav>
   );
+};
+
+Header.propTypes = {
+  changeLanguage: PropTypes.func.isRequired
 };
 
 export default Header;
